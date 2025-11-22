@@ -1,7 +1,13 @@
-// app/page.tsx (or src/app/page.tsx)
+"use client";
 import Link from "next/link";
 
 export default function Home() {
+  const handleConnect = () => {
+    const backendUrl =
+      process.env.NEXT_PUBLIC_BACKEND_URL || "https://lighter-delv.onrender.com";
+    window.location.href = `${backendUrl}/login`;
+  };
+
   return (
     <main className="min-h-screen bg-[#101010] text-white">
       {/* HERO SECTION */}
@@ -39,9 +45,7 @@ export default function Home() {
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold max-w-3xl leading-tight md:leading-[1.1]">
               Master your{" "}
-              <span className="text-[#D3D3D3]">
-                email, meetings
-              </span>{" "}
+              <span className="text-[#D3D3D3]">email, meetings</span>{" "}
               & busy days with one assistant.
             </h1>
 
@@ -53,12 +57,12 @@ export default function Home() {
 
             {/* Buttons */}
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="http://localhost:8080/login"
+              <button
+                onClick={handleConnect}
                 className="px-8 py-3 rounded-full bg-[#D3D3D3] text-black text-sm font-medium tracking-wide hover:bg-white transition shadow-lg shadow-black/40"
               >
                 Connect to Gmail
-              </Link>
+              </button>
 
               <a
                 href="#pricing"
@@ -108,7 +112,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Placeholder sections we’ll flesh out later */}
+      {/* FEATURES SECTION */}
       <section
         id="features"
         className="bg-[#f4f4f5] text-[#111111] py-20 md:py-28 px-6 md:px-20"
@@ -124,8 +128,6 @@ export default function Home() {
 
           {/* GRID OF FEATURES */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-            
-            {/* FEATURE 1 */}
             <div className="bg-white rounded-3xl shadow-xl shadow-black/5 p-8 border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
               <h3 className="text-xl font-semibold mb-4">Email Summary Preview</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -134,7 +136,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* FEATURE 2 */}
             <div className="bg-white rounded-3xl shadow-xl shadow-black/5 p-8 border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
               <h3 className="text-xl font-semibold mb-4">AI Draft Replies</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -143,7 +144,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* FEATURE 3 */}
             <div className="bg-white rounded-3xl shadow-xl shadow-black/5 p-8 border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
               <h3 className="text-xl font-semibold mb-4">Smart Inbox Labeling</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -152,7 +152,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* FEATURE 4 */}
             <div className="bg-white rounded-3xl shadow-xl shadow-black/5 p-8 border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
               <h3 className="text-xl font-semibold mb-4">Meeting Agent with MoM</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -160,11 +159,11 @@ export default function Home() {
                 Meeting in the custom structure you define — action items, owners, and deadlines.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
+      {/* MEETING SECTION */}
       <section
         id="meeting"
         className="bg-[#e5e5e5] text-[#111111] py-16 md:py-20 px-6 md:px-16"
@@ -179,6 +178,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PRICING SECTION */}
       <section
         id="pricing"
         className="bg-[#111111] text-gray-100 py-16 md:py-20 px-6 md:px-16"
@@ -199,17 +199,17 @@ export default function Home() {
               While in beta, Light is free for early users. Connect Gmail and start
               testing the workflow.
             </p>
-            <Link
-              href="http://localhost:8080/login"
+            <button
+              onClick={handleConnect}
               className="inline-block px-6 py-3 rounded-full bg-[#D3D3D3] text-black text-sm font-medium tracking-wide hover:bg-white transition"
             >
               Get started
-            </Link>
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* FOOTER */}
       <footer className="bg-black text-gray-500 text-xs py-6 px-6 md:px-16">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
           <span>© {new Date().getFullYear()} Light. All rights reserved.</span>
